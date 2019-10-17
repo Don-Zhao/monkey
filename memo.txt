@@ -1,0 +1,61 @@
+关于静态文件：
+	静态资源文件在springboot中的加载顺序：
+		META/resources > resources > static > public 有则返回，没有则继续往下查找
+
+	如果不想使用任何模板，那么html文件就必须放在以上所说的文件夹中（类路径）
+	
+关于文件上传：
+	表单的enctype必须为multipart/form-data
+	使用MultipartFile来上传文件，使用@RequestParam可以映射，还可以自动映射。
+	利用MultipartConfigElement来配置
+		@Bean
+		public MultipartConfigElement multipartConfigElement() {
+			MultipartConfigFactory factory = new MultipartConfigFactory();
+			factory.setMaxFileSize(DataSize.ofMegabytes(2L));
+			factory.setMaxRequestSize(DataSize.ofMegabytes(10L));
+			return factory.createMultipartConfig();
+		}
+	如果打成jar运行，则可以在目录下直接运行java -jar XXX。jar即可，若提示没有找不到main方法，
+	则建立MANIFEST.MF文件指出main方法，或者添加maven插件，打包后可直接生成MANIFEST.MF文件。
+	maven插件如下：
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+		</plugin>
+		
+	打成jar包后无法插入图片，则另外制定文件上传路径，并在application.properties文件把该路径定义
+	为程序的静态资源文件：
+		1 upload.path=D:/tmp/（这个名字可以自定义）
+		2 spring.resources.static-locations=classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/test/,file:${upload.path}
+		
+		
+
+热部署：
+	1 添加依赖
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		默认情况下，上面的jar包不监控静态资源文件的更新，即更新静态资源文件不会重启
+	2 在application.properties中添加
+		spring.devtools.restart.exclude=application.properties
+	   指定某些文件不进行监控
+	3 也可以通过文件进行手动重启，在application.properties中添加
+		spring.devtools.restart.trigger-file=trigger.txt
+	  在代码或者配置改变的情况下，不会重启，只有改变trigger.txt才会触发重启
+	  
+	  
+spring boot把配置文件自动映射到属性或者实体类
+	1 在Controller类上面配置@PropertySource("classpath:xxxx.properties")
+	  并在属性上标记@Value("${xxx.xxx}"),这样就映射到属性上了
+	
+	2 在实体类上映射,在实体类上加
+		@Component
+		@PropertySource("classpath:application.properties")
+		@ConfigurationProperties
+	并在属性上标记@Value("${xxx.xxx}")就可以了
+	
+	如果使用@ConfigurationProperties(prefix="xxx.xxx")就不用写@Value，而是通过
+	名称自动注入
+	 
