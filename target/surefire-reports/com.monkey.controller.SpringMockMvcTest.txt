@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.monkey.controller.SpringMockMvcTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.988 s - in com.monkey.controller.SpringMockMvcTest
