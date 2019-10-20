@@ -1,0 +1,55 @@
+spring boot 2.x过滤器filter
+	1 spring默认加载的Filter有
+		characterEncodingFilter
+		formContentFilter
+		hiddenHttpMethodFilter
+		requestContextFilter
+		
+	2 Filter优先级
+		自定义filter的优先级需要跟系统filter的优先级有所区分，防止冲突
+		
+	3 自定义filter
+		1 使用serlvet3.0的注解进行配置
+		2 在启动类上加@SerletComponentScan，开启servlet扫描
+		3 新建一个filter类，implement Filter，并实现对应的接口
+		4 用@WebFilter来标记这个类为一个Filter
+		
+使用servlet3.0建立原生的servlet
+	1 自定义servlet
+		1 使用serlvet3.0的注解进行配置
+		2 在启动类上加@SerletComponentScan，开启servlet扫描
+		3 新建一个Servlet类，implement HttpServlet，并实现对应的接口
+		4 用@WebServlet来标记这个类为一个Servlet
+		
+Listener监听器
+	1 自定义Listener（常用监听器ServletContextListener，HttpSessionListener，ServletRequestListener）
+	
+	2 自定义Listener
+		1 使用serlvet3.0的注解进行配置
+		2 在启动类上加@SerletComponentScan，开启servlet扫描
+		3 新建一个Listener类，implement 响应的listener，并实现对应的接口
+		4 用@WebListener来标记这个类为一个Listener
+		
+拦截器
+	1 @Configuration
+		2.x之前配置拦截器，继承WebMvcConfigurationAdapter
+		2.x之后，实现WebMvcConfigurer
+		
+	2 自定义拦截器 HandlerInterceptor
+		preHandle：调用controller方法之前
+		postHandle：Controller方法调用之后，视图渲染前，如果controller出了异常，则不会执行
+		afterCompletion： 不管有没有异常，都会被调用，用于资源清理
+		
+	3 按照注册顺序进行拦截，先注册，先被拦截(以链式的方式顺序执行)
+	
+	拦截规则： 目录用/*/**, 拦截最后的路径用/**
+	
+	Filter
+		是基于函数回调doFiter()，而interceptor基于AOP思想
+		FIlter只在servlet前后起作用，而Interceptor深入到方法前后，异常抛出前后
+		filter依赖于serlvet，而interceptor不依赖
+		interceptor可以被多次调用，filter只在容器初始化时调用一次
+		执行顺序：
+			过滤前==》拦截前==》action执行==》拦截后==》过滤后
+	
+		
