@@ -11,9 +11,11 @@
 	<groupId>com.monkey</groupId>
 	<artifactId>monkey</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	
 	<name>monkey</name>
 	<description>Demo project for Spring Boot</description>
-
+	
 	<properties>
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.0.0</maven-jar-plugin.version>
@@ -53,6 +55,8 @@
 	</dependencies>
 
 	<build>
+		<!-- 项目名称 -->
+		<finalName>monkey</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

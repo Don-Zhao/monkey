@@ -58,4 +58,54 @@ spring boot把配置文件自动映射到属性或者实体类
 	
 	如果使用@ConfigurationProperties(prefix="xxx.xxx")就不用写@Value，而是通过
 	名称自动注入
+	
+spring boot单元测试
+	 1 引入依赖
+	 	<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	 2 使用
+	 	@RunWith(SpringRunner.class)
+	 	@SpringBootTest(classes=XXX.class) // 用来启动整个springboot工程
+	 	
+spring boot单元测试MockMvc使用
+	1 增加类注解
+		@AutoConfigureMockMvc
+	
+	2 相关API
+		perform： 执行一个RequestBuilder请求
+		andExpect： 添加验证规则
+		andReturn：返回响应的MvcResult
+		
+修改Banner
+
+异常处理
+	@ControllerAdvice
+	@RestControllerAdvice
+	+ @ExceptionHandler
+	
+spring boot启动工程打成war在tomcat中运行
+	1 jar包启动 上面上传文件章节已经写出来了
+	
+	2 IDE启动 熟悉
+	
+	3 war包启动
+		1 修改pom.xml中<package>jar</package>   ==> <package>war</package>
+		<build>中添加<finalName>monkey</finalName>，修改项目名称
+		2 修改启动类
+			@SpringBootApplication
+			public class MonkeyApplication extends SpringBootServletInitializer{
+				
+			    public static void main( String[] args ){
+			        SpringApplication.run(MonkeyApplication.class, args);
+			    }
+			
+				@Override
+				protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+					return builder.sources(MonkeyApplication.class);
+				}
+			} 
+		 3 maven打包，放在tomcat中运行
 	 

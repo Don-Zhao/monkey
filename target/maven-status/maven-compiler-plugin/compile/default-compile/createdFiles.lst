@@ -1,0 +1,17 @@
+com\monkey\MonkeyApplication.class
+com\monkey\config\MonkeyConfig.class
+com\monkey\controller\OtherHttpController.class
+com\monkey\controller\JsonController.class
+com\monkey\model\JsonData.class
+com\monkey\controller\FileUpAndDownloadController.class
+META-INF\spring-configuration-metadata.json
+com\monkey\controller\DemoController.class
+com\monkey\controller\AppController.class
+com\monkey\config\ServerSettings.class
+com\monkey\model\User.class
+com\monkey\controller\GetHttpController.class
+com\monkey\config\MonkeyConfig$1.class
+com\monkey\controller\CustomExceptionHandler.class
+com\monkey\controller\ExceptionController.class
+com\monkey\controller\FileController.class
+com\monkey\exception\MonkeyException.class
