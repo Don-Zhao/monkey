@@ -1,0 +1,72 @@
+spring boot 2.x使用mybatis3
+	1 添加依赖包
+		<!-- mybatis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- mysql驱动包 -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot</artifactId>
+			<version>2.1.0</version>
+			<type>pom</type>
+		</dependency>
+		<!-- 数据库连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.18</version>
+		</dependency>
+		
+	2 修改配置文件
+		#mysql 
+		spring.datasource.url=jdbc:mysql://localhost:3306/monkey
+		#驱动可以省略，springboot会自动检测
+		spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+		spring.datasource.username=root
+		spring.datasource.password=admin
+		#利用此配置切换数据源
+		spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+	
+	3 启动类加上Mapper扫描
+		@MapperScan("xx.xx.xx")
+		
+		利用下面的配置也可以切换数据源方法
+		@Bean
+		@ConfigurationProperties(prefix="spring.datasource")
+		public DataSource druidDataSource() {
+			DruidDataSource dataSource = new DruidDataSource();
+			return dataSource;
+		}
+	4 建立Mapper
+		注意： #{}和${}都能给SQL中传值，推荐使用#{}，会预编译，然后绑定值，${}使用有sql注入的漏洞
+		获取数据库自增id
+		
+	5 打印SQL
+		mybatis.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
+		
+	6 设置字段和表字段的对应关系
+		@Results({
+			@Result(column="XXX", property="XXX")
+		})
+		
+	7 事务 常见的隔离级别和传播行为
+		1 单机事务的隔离级别
+			Serializable：最严格的，串行处理，资源消耗大
+			Repeatable Read：保证了一个事务不会修改已经由另一个事务读取但未提交的数据
+			Read Committed：大多数主流数据库默认的事务等级
+			Read unCommitted： 保证了读取过程中不会读取到非法数据
+		2 常见的传播行为
+			PROPAGRTION_REQUIRED--支持当前事务，但是如果没有当前事务，则新建一个，最常见的选择
+			PROPAGRTION_SUPPORTS--支持当前事务，如果当前没有事务，就以非事务方式进行
+			PROPAGRTION_MANDATORY--支持当前事务，如果没有事务，则抛出异常
+			PROPAGRTION_REQUIRES_NEW--新建事务，如果当前存在事务，则当前事务挂起，两个事务之间没有关系，一个异常，一个提交，不会同时回滚
+			PROPAGRTION_NOT_SUPPORTED--以非事务的方式操作，如果当前存在事务，则把当前事务挂起
+			PROPAGRTION_NEVER--以非事务方式运行，如果存在事务，则抛出异常
+			
+spring boot处理事务
+	使用注解@Transactional
+		该注解可以设定其隔离级别以及传播行为
+	

@@ -4,6 +4,12 @@
       "name": "",
       "type": "com.monkey.config.ServerSettings",
       "sourceType": "com.monkey.config.ServerSettings"
+    },
+    {
+      "name": "spring.datasource",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.monkey.config.MonkeyConfig",
+      "sourceMethod": "public javax.sql.DataSource druidDataSource() "
     }
   ],
   "properties": [
