@@ -12,8 +12,8 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new MyTwoHandlerInterceptor()).addPathPatterns("/**");
-		registry.addInterceptor(new MyHandlerInterceptor()).addPathPatterns("/**");
+//		registry.addInterceptor(new MyTwoHandlerInterceptor()).addPathPatterns("/**");
+//		registry.addInterceptor(new MyHandlerInterceptor()).addPathPatterns("/**");
 		
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}

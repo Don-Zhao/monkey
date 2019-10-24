@@ -1,0 +1,32 @@
+1 常见的定时任务
+	java自带的java.util.Timer类
+		timer：配置比较复杂，并且有时间延后问题
+		timertask：不推荐使用
+
+2 Quartz框架
+	配置更加简单，xml或者注解配置
+	
+
+3 springboot使用注解方式
+	启动类中加@EnableScheduling开启定时任务，自动扫描
+	业务类中@Component被容器扫描，定时执行的方法加@Scheduled注解
+	
+	
+4 定时任务
+	corn： 
+	fixedRate：每隔多少秒执行一次（上次开始执行时间+秒数后再次执行）
+	fixedDelay：上一次执行之后（结束时间），多少秒之后，再执行
+	fixedDelayString:同fixedDelay一样，不过时间用字符串形式表示，可以在配置文件中配置，利用占位符的方式注入
+	
+	
+springboot异步任务
+	1 启动类上加入@EnableAsync开启异步任务
+	
+	2 业务类上加@Component
+	
+	3 要执行的方法上面加上@Async，也可以加在类上，表明该类所有方法都是异步的
+		注意点：
+			1 要把异步方法封装在类里面，不能直接写到Controller里面
+			2 增加Futrue<String>，返回结果AsyncResult<String>
+			3 如果要拿到结果，需要判断全部的task.isDone()
+	

@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 //@Configuration
@@ -14,6 +16,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 @ServletComponentScan
 @MapperScan("com.monkey.mapper")
+@EnableScheduling   //开启定时任务
+@EnableAsync        //开启异步任务
 public class MonkeyApplication extends SpringBootServletInitializer{
 	
     public static void main( String[] args ){
