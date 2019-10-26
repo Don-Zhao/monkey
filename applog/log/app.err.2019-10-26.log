@@ -1,0 +1,147 @@
+2019-10-26 19:55:22.313 ERROR[restartedMain]o.s.boot.diagnostics.LoggingFailureAnalysisReporter.report:40 -
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field template in com.monkey.service.impl.JmsServiceImpl required a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+The following candidates were found but could not be injected:
+	- Bean method 'jmsMessagingTemplate' in 'JmsAutoConfiguration.MessagingTemplateConfiguration' not loaded because Ancestor org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration did not match
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' in your configuration.
+
+2019-10-26 19:56:20.169 ERROR[restartedMain]o.s.boot.diagnostics.LoggingFailureAnalysisReporter.report:40 -
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field jmsTemplate in com.monkey.service.impl.JmsServiceImpl required a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+The following candidates were found but could not be injected:
+	- Bean method 'jmsMessagingTemplate' in 'JmsAutoConfiguration.MessagingTemplateConfiguration' not loaded because Ancestor org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration did not match
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' in your configuration.
+
+2019-10-26 20:01:53.919 ERROR[restartedMain]o.s.boot.diagnostics.LoggingFailureAnalysisReporter.report:40 -
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field jmsTemplate in com.monkey.service.impl.JmsServiceImpl required a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+The following candidates were found but could not be injected:
+	- Bean method 'jmsMessagingTemplate' in 'JmsAutoConfiguration.MessagingTemplateConfiguration' not loaded because Ancestor org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration did not match
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' in your configuration.
+
+2019-10-26 20:05:55.408 ERROR[restartedMain]o.s.boot.diagnostics.LoggingFailureAnalysisReporter.report:40 -
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field jmsTemplate in com.monkey.service.impl.JmsServiceImpl required a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+The following candidates were found but could not be injected:
+	- Bean method 'jmsMessagingTemplate' in 'JmsAutoConfiguration.MessagingTemplateConfiguration' not loaded because Ancestor org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration did not match
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' in your configuration.
+
+2019-10-26 20:14:39.538 ERROR[restartedMain]o.s.boot.diagnostics.LoggingFailureAnalysisReporter.report:40 -
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field jmsTemplate in com.monkey.service.impl.JmsServiceImpl required a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+The following candidates were found but could not be injected:
+	- Bean method 'jmsMessagingTemplate' in 'JmsAutoConfiguration.MessagingTemplateConfiguration' not loaded because Ancestor org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration did not match
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' in your configuration.
+
+2019-10-26 20:15:28.575 ERROR[restartedMain]o.s.boot.diagnostics.LoggingFailureAnalysisReporter.report:40 -
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field jmsTemplate in com.monkey.service.impl.JmsServiceImpl required a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+The following candidates were found but could not be injected:
+	- Bean method 'jmsMessagingTemplate' in 'JmsAutoConfiguration.MessagingTemplateConfiguration' not loaded because Ancestor org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration did not match
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' in your configuration.
+
+2019-10-26 20:24:29.477 ERROR[restartedMain]o.s.boot.diagnostics.LoggingFailureAnalysisReporter.report:40 -
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field jmsTemplate in com.monkey.service.impl.JmsServiceImpl required a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+The following candidates were found but could not be injected:
+	- Bean method 'jmsMessagingTemplate' in 'JmsAutoConfiguration.MessagingTemplateConfiguration' not loaded because Ancestor org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration did not match
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'org.springframework.jms.core.JmsMessagingTemplate' in your configuration.
+

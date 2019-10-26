@@ -1,0 +1,66 @@
+spring boot整合activeMQ
+	1 点对点消息队列
+		1 加入依赖
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-activemq</artifactId>
+			</dependency>
+			<!-- 加入线程池 -->
+			<dependency>
+			    <groupId>org.messaginghub</groupId>
+			    <artifactId>pooled-jms</artifactId>
+			</dependency>
+		2 application.properties加入配置
+			#actvieMQ
+			spring.activemq.broker-url=tcp://127.0.0.1:61616
+			spring.activemq.user=admin
+			spring.activemq.password=admin
+			
+			spring.activemq.pool.enabled=true
+			spring.activemq.pool.max-connections=100
+		3 启动类上加入@EnableJms开启支持jms
+			还可以建立Queue的bean类备用
+				@Bean
+				public Queue queue() {
+					return new ActiveMQQueue("monkey.queue");
+				}
+		4 利用JmsMessagingTemplate发送消息
+		
+		5 建立消息消费者
+			1 在业务类上加@Component
+			2 消费消息的方法上加入@JmsListener(destination="队列名称")
+			
+	2 发布订阅模型（加入依赖与上同）
+		1 开启发布订阅模型支持，默认只支持点对点模型,在application.properties中加入
+			spring.jms.pub-sub-domain=true
+		2 启动类上加入@EnableJms开启支持jms
+		3 创建topic
+			@Bean
+			public Topic topic() {
+				return new ActiveMQTopic("monkey.topic");
+			}
+		4 利用JmsMessagingTemplate发送消息
+		5 建立消息消费者
+			1 在业务类上加@Component
+			2 消费消息的方法上加入@JmsListener(destination="主题名称")
+
+使用发布订阅模型时，不能用点对点模型？
+	1 需要给topic定义独立的JmsListenerContainer
+		@Bean
+		public JmsListenerContainerFactory<?> jmsListenerContainerTopic(ConnectionFactory activeMQConnectionFactory) {
+			DefaultJmsListenerContainerFactory bean = new DefaultJmsListenerContainerFactory();
+			bean.setPubSubDomain(true);
+			bean.setConnectionFactory(activeMQConnectionFactory);
+			return bean;
+		}
+	
+	2 加入到topic的@JmsListener的参数中
+		@JmsListener(destination="monkey.topic", containerFactory="jmsListenerContainerTopic")
+	
+	3 注释掉application.properties中的
+		spring.jms.pub-sub-domain=true
+		
+	这样做，就可以同时支持点对点以及发布订阅模型了
+	
+	
+

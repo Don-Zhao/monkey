@@ -1,0 +1,25 @@
+rocketmq部署：
+	1 下载rocketmq-all-4.5.2-bin-release.zip后解压
+	2 解压后，在环境变量里面配置ROCKETMQ_HOME=rocketmq-all-4.5.2-bin-release.zip
+		解压后的路径
+	3 开启服务
+		进入bin目录，执行 start mqnamesrv.cmd
+	4 启动broker
+		start mqbroker.cmd -n 127.0.0.1:9876 autoCreateTopicEnable=true
+	
+rocketmq可视环境安装（插件部署）
+	1 https://github.com/apache/rocketmq-externals.git
+		下载rocketmq-externals-master
+	2 找到rocketmq-console工程,修改application.properties文件
+		server.port=8080
+		rocketmq.config.namesrvAddr=127.0.0.1:9876
+	3 利用mvn编译该工程
+		mvn clean package -Dmaven.test.skip=true
+	4 在该工程target目录下，找到rocketmq-console-ng-1.0.1.jar文件并运行
+		jave -jar rocketmq-console-ng-1.0.1.jar
+	5 http://localhost:8080即可打开
+	
+spring boot整合
+
+
+	
