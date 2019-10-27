@@ -1,0 +1,7 @@
+spring boot多环境配置
+	1 必须把application.properties放在config下面
+		src/main/resources下面必须有空的文件application.properties
+	2 多环境的配置为在config下面放application-{profile}.properties
+	
+	3 在application.properties中配置
+		spring.profiles.active={profile}

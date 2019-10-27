@@ -19,7 +19,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @MapperScan("com.monkey.mapper")
 //@EnableScheduling   //开启定时任务
 //@EnableAsync        //开启异步任务
-@EnableJms
+//@EnableJms
 public class MonkeyApplication extends SpringBootServletInitializer{
 	
     public static void main( String[] args ){
